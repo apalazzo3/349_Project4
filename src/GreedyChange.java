@@ -5,14 +5,16 @@ public class GreedyChange
  {
 	public static void main(String[] args)
 	{
-            int[] d = prompt();
-            int n = d[0];
-            
+            int[] p = prompt();
+            int[] d = Arrays.copyOfRange(p, 1 p.length + 1);
+            int n = p[0];
+            change_greedy(n, d);
+
 	}
 
 	public static int[] change_greedy(int n, int[] d)
 	{
-
+            int [] 
 	}
 
       private int[] prompt() // {n, d0..di}
