@@ -19,26 +19,58 @@ public class ChangeMaker
 		
 		for(int i = 0; i < d.length; i++)
 		{
-			counts[i] = (int)Math.floor(n/d[i]);
-			n = n%d[i];
+			if(n != 0)
+			{
+				counts[i] = (int)Math.floor(n/d[i]);
+				n = n%d[i];
+			}
+			else
+			{
+				counts[i] = 0;
+			}
 		}
 		
 		return counts;
 	}
 	
-	public static int[] change_greedy(int n, int[] d)
+	public static void printDP(int n, int[] d, int[] dp)
+	{
+		int coins = 0;
+		
+		System.out.println();
+		System.out.println("DP algorithms results");
+		System.out.printf("Amount: %d\n", n);
+		System.out.printf("Optimal distribution: ");
+		
+		for(int i = 0; i < dp.length; i++)
+		{
+			if(dp[i] != 0)
+			{
+				System.out.printf("%d*%dc ", dp[i], d[i]);
+				coins += dp[i];
+			}
+		}
+		
+		System.out.println();
+		System.out.printf("Optimal coin count: %d\n", coins);
+	}
+	
+	/* public static int[] change_greedy(int n, int[] d)
 	{
 
-	}
+	} */
 	
 	public static void main(String[] args)
 	{
-            int[] d = prompt();
-            int n = d[0];
+            int[] p = prompt();
+            int[] d = Arrays.copyOfRange(p, 1, p.length);
+            int n = p[0];
+            int[] dp = change_DP(n, d);
+			printDP(n, d, dp);
             
 	}
 
-      private int[] prompt() // {n, d0..di}
+      private static int[] prompt() // {n, d0..di}
       {
             int num;
 		Scanner in = new Scanner(System.in);
