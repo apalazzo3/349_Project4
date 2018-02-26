@@ -13,6 +13,34 @@ import java.io.*;
 public class ChangeMaker
 {
 	public static int[] change_DP(int n, int[] d)
+	{		
+		int C[] = new int[n];
+        int A[] = new int[n];
+		
+		// initialize arrays
+		for(int i = 0; i <= n; i++)
+		{
+			C[i] = Integer.MAX_VALUE-1;
+            A[i] = -1;
+		}
+		
+		for(int j = 0; j < d.length; j++)
+		{
+			for(int k = 0; k <= n; k++)
+			{
+				if(i >= d[j]){
+                    if (C[i - d[j]] + 1 < C[i]) {
+                        C[i] = 1 + C[i - d[j]];
+                        A[i] = j;
+                    }
+                }
+			}
+		}
+		
+		return C[n];
+	}
+	
+	public static int[] change_greedy(int n, int[] d)
 	{
 		int remains;
 		int[] counts = new int[d.length];
@@ -33,7 +61,7 @@ public class ChangeMaker
 		return counts;
 	}
 	
-	public static void printDP(int n, int[] d, int[] dp)
+	public static void printGreedy(int n, int[] d, int[] dp)
 	{
 		int coins = 0;
 		
@@ -55,18 +83,13 @@ public class ChangeMaker
 		System.out.printf("Optimal coin count: %d\n", coins);
 	}
 	
-	/* public static int[] change_greedy(int n, int[] d)
-	{
-
-	} */
-	
 	public static void main(String[] args)
 	{
             int[] p = prompt();
             int[] d = Arrays.copyOfRange(p, 1, p.length);
             int n = p[0];
             int[] dp = change_DP(n, d);
-			printDP(n, d, dp);
+			printGreedy(n, d, dp);
             
 	}
 
