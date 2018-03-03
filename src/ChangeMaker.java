@@ -133,17 +133,17 @@ public class ChangeMaker
 			}
 		}
 
-		for(int k = 0; k < n; k++)
-		{
-			System.out.printf("C: %d A: %d\n", C[k], A[k]);
-		}
+		// for(int k = 0; k < n; k++)
+		// {
+		// 	System.out.printf("C: %d A: %d\n", C[k], A[k]);
+		// }
 
-		/*
+
 
 		//constructing the result array
 		int index = n - 1;
 		int coinsSeen = 0;
-		while(coinsSeen < C[n - 1])
+		while(index >= 0)
 		{
 			if(A[index] != -1)
 			{
@@ -157,7 +157,10 @@ public class ChangeMaker
 			}
 		}
 
-		*/
+		for(int i : result)
+		{
+			System.out.printf("%d, ", i);
+		}
 		return result;
 	}
 
