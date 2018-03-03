@@ -86,20 +86,18 @@ public class ChangeMaker
 	public static void main(String[] args)
 	{
 		Scanner keyboard = new Scanner(System.in);
-		//int[] p = prompt(keyboard);
-		//int[] d = Arrays.copyOfRange(p, 1, p.length);
-		//int n = p[0];
+		int[] p = prompt(keyboard);
+		int[] d = Arrays.copyOfRange(p, 1, p.length);
+		int n = p[0];
 
-		// TODO : temporary
-		int n = 87;
-		int[] d = {100, 25, 10 , 5, 1};
+
 
 		while(n != 0)
 		{
 			int[] dp = change_DP(n, d);
-			//int[] g = change_greedy(n, d);
+			int[] g = change_greedy(n, d);
 			printDP(n, d, dp);
-			//printGreedy(n, d, g);
+			printGreedy(n, d, g);
 
 			System.out.println("Enter a positive amount to be changed (enter 0 to quit):");
 			n = keyboard.nextInt();
