@@ -36,7 +36,7 @@ public class ChangeMaker
 				}
 				else
 				{
-					System.out.printf("+ %d*%dc", dp[i], d[i]);
+					System.out.printf(" + %d*%dc", dp[i], d[i]);
 				}
 
 
@@ -51,7 +51,7 @@ public class ChangeMaker
 	public static void printDP(int n, int[] d, int[] dp)
 	{
 		int coins = 0;
-		boolean switch = false;
+		boolean flag = false;
 
 		System.out.println();
 		System.out.println("DP algorithm results");
@@ -62,15 +62,15 @@ public class ChangeMaker
 		{
 			if(dp[i] != 0)
 			{
-				if(!switch)
+				if(!flag)
 				{
 					System.out.printf("%d*%dc", dp[i], d[i]);
-					switch = true;
+					flag = true;
 
 				}
 				else
 				{
-					System.out.printf("+ %d*%dc", dp[i], d[i]);
+					System.out.printf(" + %d*%dc", dp[i], d[i]);
 				}
 
 
@@ -127,6 +127,7 @@ public class ChangeMaker
 
 	public static int[] change_DP(int n, int[] d)
 	{
+		++n;
 		int[] C = new int[n];
 		int[] A = new int[n];
 		int[] result = new int[d.length];
@@ -147,7 +148,7 @@ public class ChangeMaker
 				{
 					if (C[j - d[i]] < C[j])
 					{
-						C[j] =  C[j - d[i]];
+						C[j] = 1 + C[j - d[i]];
 						A[j] = i;
 					}
 				}
@@ -169,14 +170,6 @@ public class ChangeMaker
 				index--;
 			}
 		}
-
-		// emergency - we didn't want to do this but we had to....
-		if(n % 5 != 0)
-		{
-			result[result.length - 1]++;
-		}
-
-
 
 		return result;
 	}
