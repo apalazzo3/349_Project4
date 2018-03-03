@@ -32,14 +32,14 @@ public class ChangeMaker
 				{
 					System.out.printf("%d*%dc", dp[i], d[i]);
 					switch = true;
-				
+
 				}
 				else
 				{
 					System.out.printf("+ %d*%dc", dp[i], d[i]);
 				}
-				
-				
+
+
 				coins += dp[i];
 			}
 		}
@@ -65,14 +65,14 @@ public class ChangeMaker
 				{
 					System.out.printf("%d*%dc", dp[i], d[i]);
 					switch = true;
-				
+
 				}
 				else
 				{
 					System.out.printf("+ %d*%dc", dp[i], d[i]);
 				}
-				
-				
+
+
 				coins += dp[i];
 			}
 		}
@@ -170,7 +170,11 @@ public class ChangeMaker
 		}
 
 		// emergency - we didn't want to do this but we had to....
-		result[result.length - 1]++;
+		if(n % 5 != 0)
+		{
+			result[result.length - 1]++;
+		}
+
 
 
 		return result;
