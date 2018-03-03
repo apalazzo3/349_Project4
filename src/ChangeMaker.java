@@ -118,7 +118,7 @@ public class ChangeMaker
 		}
 
 
-		for(int j = 0; j <= n; j++) // from 0..amount to be changed
+		for(int j = 0; j < n; j++) // from 0..amount to be changed
 		{
 			for(int i = 0; i < d.length; i++) // iterating {100 , 25 , 10 , 5 , 1}
 			{
@@ -130,10 +130,18 @@ public class ChangeMaker
 						A[j] = i;
 					}
 				}
+
 			}
 		}
 
-		return C;
+		//constructing the result array
+		int index = n - 1;
+		for(int i = 0; i < C[n]; i++)
+		{
+			result[A[index]]++;
+			index -= d[A[index]];
+		}
+		return result;
 	}
 
 	public static int[] change_greedy(int n, int[] d)
