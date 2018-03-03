@@ -108,9 +108,10 @@ public class ChangeMaker
 		int[] C = new int[n];
 		int[] A = new int[n];
 		int[] result = new int[d.length];
+		C[0] = 0;
 
 		// initialize arrays
-		for(int i = 0; i < n; i++)
+		for(int i = 1; i < n; i++)
 		{
 			C[i] = Integer.MAX_VALUE-1;
 			A[i] = -1;
@@ -132,6 +133,13 @@ public class ChangeMaker
 			}
 		}
 
+		for(int k = 0; k < n; k++)
+		{
+			System.out.printf("C: %d A: %d\n", C[k], A[k]);
+		}
+
+		/*
+
 		//constructing the result array
 		int index = n - 1;
 		int coinsSeen = 0;
@@ -148,6 +156,8 @@ public class ChangeMaker
 				index--;
 			}
 		}
+
+		*/
 		return result;
 	}
 
