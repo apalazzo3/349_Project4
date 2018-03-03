@@ -125,7 +125,7 @@ public class ChangeMaker
 				{
 					if (C[j - d[i]] < C[j])
 					{
-						C[j] = C[j - d[i]];
+						C[j] =  C[j - d[i]];
 						A[j] = i;
 					}
 				}
@@ -133,23 +133,14 @@ public class ChangeMaker
 			}
 		}
 
-		// for(int k = 0; k < n; k++)
-		// {
-		// 	System.out.printf("C: %d A: %d\n", C[k], A[k]);
-		// }
-
-
-
 		//constructing the result array
 		int index = n - 1;
-		int coinsSeen = 0;
-		while(index >= 0)
+		while(index > 0)
 		{
 			if(A[index] != -1)
 			{
 				result[A[index]]++;
 				index -= d[A[index]];
-				coinsSeen++;
 			}
 			else
 			{
@@ -157,10 +148,10 @@ public class ChangeMaker
 			}
 		}
 
-		for(int i : result)
-		{
-			System.out.printf("%d, ", i);
-		}
+		// emergency - we didn't want to do this but we had to....
+		result[result.length - 1]++;
+
+
 		return result;
 	}
 

@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Tester
 {
-    public staic void main(String[] args)
+    public static void main(String[] args)
     {
         int[] set1 = {100, 50, 25, 10, 5, 1};
         int[] set2 = {100, 50, 20, 15, 10, 5, 3, 2, 1 };
