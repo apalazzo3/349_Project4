@@ -122,9 +122,9 @@ public class ChangeMaker
 			{
 				if(j >= d[i]) // if amount to be changed is >= current coin denomination
 				{
-					if (C[j - d[i]]  + 1 < C[j])
+					if (C[j - d[i]] < C[j])
 					{
-						C[j] = 1 + C[j - d[i]];
+						C[j] = C[j - d[i]];
 						A[j] = i;
 					}
 				}
@@ -140,9 +140,13 @@ public class ChangeMaker
 			if(A[index] != -1)
 			{
 				result[A[index]]++;
+				index -= d[A[index]];
 				coinsSeen++;
 			}
-			index -= d[A[index]];
+			else
+			{
+				index--;
+			}
 		}
 		return result;
 	}
