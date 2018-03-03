@@ -134,7 +134,7 @@ public class ChangeMaker
 
 		//constructing the result array
 		int index = n - 1;
-		for(int i = 0; i < C[n]; i++)
+		for(int i = 0; i < C[n - 1]; i++)
 		{
 			result[A[index]]++;
 			index -= d[A[index]];
