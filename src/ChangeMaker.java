@@ -51,6 +51,7 @@ public class ChangeMaker
 	public static void printDP(int n, int[] d, int[] dp)
 	{
 		int coins = 0;
+		boolean switch = false;
 
 		System.out.println();
 		System.out.println("DP algorithm results");
