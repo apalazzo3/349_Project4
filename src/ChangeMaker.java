@@ -12,56 +12,7 @@ import java.io.*;
 
 public class ChangeMaker
 {
-	public static int[] change_DP(int n, int[] d)
-	{
-		int[] C = new int[n];
-		int[] A = new int[n];
 
-		// initialize arrays
-		for(int i = 0; i <= n; i++)
-		{
-			C[i] = Integer.MAX_VALUE-1;
-			A[i] = -1;
-		}
-
-		for(int j = 0; j < d.length; j++)
-		{
-			for(int k = 0; k <= n; k++)
-			{
-				if(k >= d[j])
-				{
-					if (C[k - d[j]] + 1 < C[k])
-					{
-						C[k] = 1 + C[k - d[j]];
-						A[k] = j;
-					}
-				}
-			}
-		}
-
-		return C;
-	}
-
-	public static int[] change_greedy(int n, int[] d)
-	{
-		int remains;
-		int[] counts = new int[d.length];
-
-		for(int i = 0; i < d.length; i++)
-		{
-			if(n != 0)
-			{
-				counts[i] = (int)Math.floor(n/d[i]);
-				n = n%d[i];
-			}
-			else
-			{
-				counts[i] = 0;
-			}
-		}
-
-		return counts;
-	}
 
 	public static void printGreedy(int n, int[] d, int[] dp)
 	{
@@ -124,7 +75,7 @@ public class ChangeMaker
 			int[] dp = change_DP(n, d);
 			//int[] g = change_greedy(n, d);
 			printDP(n, d, dp);
-			printGreedy(n, d, g);
+			//printGreedy(n, d, g);
 
 			System.out.println("Enter a positive amount to be changed (enter 0 to quit):");
 			n = keyboard.nextInt();
@@ -151,5 +102,57 @@ public class ChangeMaker
 		int n = in.nextInt();
 		d[0] = n;
 		return d;
+	}
+
+	public static int[] change_DP(int n, int[] d)
+	{
+		int[] C = new int[n];
+		int[] A = new int[n];
+		int[] result = new int[d.length];
+
+		// initialize arrays
+		for(int i = 0; i < n; i++)
+		{
+			C[i] = Integer.MAX_VALUE-1;
+			A[i] = -1;
+		}
+
+		for(int j = 0; j < d.length; j++) // iterating {100 , 25 , 10 , 5 , 1}
+		{
+			for(int k = 0; k <= n; k++) // from 0..amount to be changed
+			{
+				if(k >= d[j]) // if amount to be changed is >= current coin denomination
+				{
+					if (C[k - d[j]] + 1 < C[k])
+					{
+						C[k] = 1 + C[k - d[j]];
+						A[k] = j;
+					}
+				}
+			}
+		}
+
+		return C;
+	}
+
+	public static int[] change_greedy(int n, int[] d)
+	{
+		int remains;
+		int[] counts = new int[d.length];
+
+		for(int i = 0; i < d.length; i++)
+		{
+			if(n != 0)
+			{
+				counts[i] = (int)Math.floor(n/d[i]);
+				n = n%d[i];
+			}
+			else
+			{
+				counts[i] = 0;
+			}
+		}
+
+		return counts;
 	}
 }

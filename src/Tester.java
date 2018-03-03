@@ -1,3 +1,11 @@
+/*
+* CS 349
+* Project 4
+*
+* @authors: Griffin Johnson & Michael Lozada
+* @id: mlozada & gpjohnso
+* @date: February 20, 2018
+*/
 import java.util.*;
 
 public class Tester
