@@ -62,7 +62,7 @@ public class ChangeMaker
 	public static void main(String[] args)
 	{
 		Scanner keyboard = new Scanner(System.in);
-		//int[] p = prompt();
+		//int[] p = prompt(keyboard);
 		//int[] d = Arrays.copyOfRange(p, 1, p.length);
 		//int n = p[0];
 
@@ -86,10 +86,9 @@ public class ChangeMaker
 
 	}
 
-	private static int[] prompt() // {n, d0..di}
+	private static int[] prompt(Scanner in) // {n, d0..di}
 	{
 		int num;
-		Scanner in = new Scanner(System.in);
 		System.out.println("Enter the number of coin-denominations and the set of coin values:");
 		num = in.nextInt();
 		int[] d = new int[num + 1];
