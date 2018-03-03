@@ -134,9 +134,14 @@ public class ChangeMaker
 
 		//constructing the result array
 		int index = n - 1;
-		for(int i = 0; i < C[n - 1]; i++)
+		int coinsSeen = 0;
+		while(coinsSeen < C[n - 1])
 		{
-			result[A[index]]++;
+			if(A[index] != -1)
+			{
+				result[A[index]]++;
+				coinsSeen++;
+			}
 			index -= d[A[index]];
 		}
 		return result;
