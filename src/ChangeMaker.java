@@ -17,7 +17,7 @@ public class ChangeMaker
 	public static void printGreedy(int n, int[] d, int[] dp)
 	{
 		int coins = 0;
-		boolean switch = false;
+		boolean flag = false;
 
 		System.out.println();
 		System.out.println("Greedy algorithm results");
@@ -28,10 +28,10 @@ public class ChangeMaker
 		{
 			if(dp[i] != 0)
 			{
-				if(!switch)
+				if(!flag)
 				{
 					System.out.printf("%d*%dc", dp[i], d[i]);
-					switch = true;
+					flag = true;
 
 				}
 				else
