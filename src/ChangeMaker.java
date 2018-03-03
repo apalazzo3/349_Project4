@@ -108,9 +108,10 @@ public class ChangeMaker
 		int[] C = new int[n];
 		int[] A = new int[n];
 		int[] result = new int[d.length];
+		C[0] = 0;
 
 		// initialize arrays
-		for(int i = 0; i < n; i++)
+		for(int i = 1; i < n; i++)
 		{
 			C[i] = Integer.MAX_VALUE-1;
 			A[i] = -1;
@@ -122,15 +123,22 @@ public class ChangeMaker
 			{
 				if(j >= d[i]) // if amount to be changed is >= current coin denomination
 				{
-					if (C[j - d[i]]  + 1 < C[j])
+					if ((C[j - d[i]]) < C[j])
 					{
-						C[j] = 1 + C[j - d[i]];
+						C[j] = C[j - d[i]];
 						A[j] = i;
 					}
 				}
 
 			}
 		}
+		
+		for(int k = 0; k < n; k++)
+		{
+			System.out.printf("C: %d A: %d\n", C[k], A[k]);
+		}
+		
+		/*
 
 		//constructing the result array
 		int index = n - 1;
@@ -144,6 +152,8 @@ public class ChangeMaker
 			}
 			index -= d[A[index]];
 		}
+		
+		*/
 		return result;
 	}
 
