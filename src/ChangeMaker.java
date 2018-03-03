@@ -117,16 +117,17 @@ public class ChangeMaker
 			A[i] = -1;
 		}
 
-		for(int j = 0; j < d.length; j++) // iterating {100 , 25 , 10 , 5 , 1}
+
+		for(int j = 0; j <= n; j++) // from 0..amount to be changed
 		{
-			for(int k = 0; k <= n; k++) // from 0..amount to be changed
+			for(int i = 0; i < d.length; i++) // iterating {100 , 25 , 10 , 5 , 1}
 			{
-				if(k >= d[j]) // if amount to be changed is >= current coin denomination
+				if(j >= d[i]) // if amount to be changed is >= current coin denomination
 				{
-					if (C[k - d[j]] + 1 < C[k])
+					if (C[j - d[i]] + 1 < C[j])
 					{
-						C[k] = 1 + C[k - d[j]];
-						A[k] = j;
+						C[j] = 1 + C[j - d[i]];
+						A[j] = i;
 					}
 				}
 			}
